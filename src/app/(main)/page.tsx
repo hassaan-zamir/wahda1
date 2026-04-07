@@ -34,7 +34,7 @@ export default async function LandingPage() {
   ]);
 
   // Type-cast JSON features
-  const projectsWithFeatures = flagshipProjects.map((p) => ({
+  const projectsWithFeatures = flagshipProjects.map((p: typeof flagshipProjects[number]) => ({
     ...p,
     features: (p.features as Array<{ icon: string; name: string; value: string }>) || [],
   }));

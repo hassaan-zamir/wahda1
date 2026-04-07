@@ -103,7 +103,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-              {project.properties.map((prop) => (
+              {project.properties.map((prop: typeof project.properties[number]) => (
                 <div
                   key={prop.id}
                   className="hover:border-[rgba(200,169,81,0.3)] hover:-translate-y-1"
@@ -169,5 +169,5 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
 export async function generateStaticParams() {
   const projects = await prisma.flagshipProject.findMany({ select: { slug: true } });
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.map((p: { slug: string }) => ({ slug: p.slug }));
 }
