@@ -26,7 +26,7 @@ export function PropertyCategoriesSection({ categories }: { categories: Category
 
   return (
     <section id="categories" ref={sectionRef}>
-      <div style={{ padding: "110px 60px", maxWidth: 1400, margin: "0 auto" }}>
+      <div className="py-16 md:py-[110px] px-4 md:px-[60px] max-w-[1400px] mx-auto">
         <div className="reveal sec-head" style={{ marginBottom: 64 }}>
           <p style={{ fontSize: 9, letterSpacing: "5px", textTransform: "uppercase", color: "var(--gold)", marginBottom: 14, fontFamily: "var(--font-dm-sans)" }}>
             Browse by Category
@@ -39,9 +39,8 @@ export function PropertyCategoriesSection({ categories }: { categories: Category
           </p>
         </div>
 
-        <div className="reveal" style={{
-          display: "grid", gridTemplateColumns: "repeat(3,1fr)",
-          gap: 2, background: "rgba(200,169,81,0.08)",
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[2px]" style={{
+          background: "rgba(200,169,81,0.08)",
         }}>
           {categories.map((cat, i) => (
             <div

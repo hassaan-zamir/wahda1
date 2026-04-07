@@ -25,8 +25,8 @@ export function TrustedBrandsSection({ brands }: { brands: TrustedBrand[] }) {
   }, []);
 
   return (
-    <section id="brands" ref={sectionRef} style={{
-      background: "var(--dark2)", padding: "100px 60px",
+    <section id="brands" ref={sectionRef} className="py-16 md:py-[100px] px-4 md:px-[60px]" style={{
+      background: "var(--dark2)",
       borderTop: "1px solid rgba(200,169,81,0.08)",
       borderBottom: "1px solid rgba(200,169,81,0.08)",
     }}>
@@ -43,9 +43,8 @@ export function TrustedBrandsSection({ brands }: { brands: TrustedBrand[] }) {
           </p>
         </div>
 
-        <div className="reveal" style={{
-          display: "grid", gridTemplateColumns: "repeat(4,1fr)",
-          gap: 2, background: "rgba(200,169,81,0.06)",
+        <div className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[2px]" style={{
+          background: "rgba(200,169,81,0.06)",
         }}>
           {brands.map((brand) => (
             <div

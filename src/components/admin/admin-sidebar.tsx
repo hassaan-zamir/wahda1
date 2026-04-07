@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import {
   Building2, LayoutDashboard, Users, Settings, Star,
-  Map, Tag, Award, Hammer, Heart, MessageSquare, TrendingUp
+  Map, Tag, Award, Hammer, Heart, MessageSquare, TrendingUp, Phone
 } from "lucide-react";
 import { AdminLogoutButton } from "./admin-logout-button";
 import {
@@ -24,6 +24,7 @@ const navItems = [
   { title: "Construction Services",url: "/admin/construction-services",  icon: Hammer },
   { title: "Why Choose Us",        url: "/admin/why-choose-us",          icon: Heart },
   { title: "Testimonials",         url: "/admin/testimonials",           icon: Star },
+  { title: "Company Info",         url: "/admin/company-info",           icon: Phone },
   { title: "Settings",             url: "/admin/settings",               icon: Settings },
 ];
 

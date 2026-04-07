@@ -60,11 +60,7 @@ export function HeroSection({ stats }: { stats: HeroStat[] }) {
       <div ref={particlesRef} style={{ position: "absolute", inset: 0, overflow: "hidden" }} />
 
       {/* Content */}
-      <div style={{
-        position: "relative", zIndex: 2,
-        padding: "72px 60px 0",
-        maxWidth: 1400, margin: "0 auto", width: "100%",
-      }}>
+      <div className="pt-24 md:pt-[72px] px-4 md:px-[60px] pb-24 relative z-[2] max-w-[1400px] mx-auto w-full">
         {/* Badge */}
         <div className="animate-fade-up-1" style={{
           display: "inline-flex", alignItems: "center", gap: 12,
@@ -121,8 +117,8 @@ export function HeroSection({ stats }: { stats: HeroStat[] }) {
         </p>
 
         {/* Actions */}
-        <div className="animate-fade-up-5" style={{ display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" }}>
-          <a href="#properties" style={{
+        <div className="animate-fade-up-5 flex flex-col sm:flex-row gap-4 items-center flex-wrap">
+          <a href="#properties" className="w-full sm:w-auto text-center" style={{
             background: "var(--gold)", color: "var(--deep)",
             padding: "16px 44px", fontSize: 10, letterSpacing: "3px",
             textTransform: "uppercase", textDecoration: "none",
@@ -133,7 +129,7 @@ export function HeroSection({ stats }: { stats: HeroStat[] }) {
           onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "var(--gold)"; (e.currentTarget as HTMLElement).style.transform = "none"; }}>
             Browse Properties
           </a>
-          <a href="#contact" style={{
+          <a href="#contact" className="w-full sm:w-auto text-center" style={{
             border: "1px solid rgba(200,169,81,0.4)", color: "var(--gold)",
             padding: "16px 44px", fontSize: 10, letterSpacing: "3px",
             textTransform: "uppercase", textDecoration: "none",
@@ -149,10 +145,7 @@ export function HeroSection({ stats }: { stats: HeroStat[] }) {
 
       {/* Stats */}
       {stats.length > 0 && (
-        <div className="animate-fade-up-6" style={{
-          position: "absolute", right: 60, bottom: 80,
-          display: "flex", gap: 48,
-        }}>
+        <div className="animate-fade-up-6 hidden lg:flex gap-12 absolute right-[60px] bottom-[80px]">
           {stats.map((s) => (
             <div key={s.label} style={{ textAlign: "center" }}>
               <div style={{

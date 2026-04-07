@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import prisma from "@/lib/prisma";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TickerSection } from "@/components/home/TickerSection";
@@ -22,6 +24,7 @@ export default async function LandingPage() {
     services,
     whyPoints,
     testimonials,
+    companyInfo,
   ] = await Promise.all([
     prisma.heroStat.findMany({ orderBy: { order: "asc" } }),
     prisma.propertyCategory.findMany({ orderBy: { order: "asc" } }),
@@ -31,6 +34,7 @@ export default async function LandingPage() {
     prisma.constructionService.findMany({ orderBy: { order: "asc" } }),
     prisma.whyChooseUs.findMany({ orderBy: { order: "asc" } }),
     prisma.testimonial.findMany({ where: { active: true } }),
+    prisma.companyInfo.findFirst(),
   ]);
 
   // Type-cast JSON features
@@ -52,7 +56,7 @@ export default async function LandingPage() {
       <HowItWorksSection />
       <WhyChooseUsSection points={whyPoints} />
       <TestimonialsSection testimonials={testimonials} />
-      <CTAContactSection />
+      <CTAContactSection info={companyInfo} />
     </div>
   );
 }

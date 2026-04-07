@@ -42,6 +42,20 @@ async function main() {
   });
   console.log("✅ Site stats seeded");
 
+  // ── Company Info ────────────────────────────────────────────────
+  const companyInfoCount = await prisma.companyInfo.count();
+  if (companyInfoCount === 0) {
+    await prisma.companyInfo.create({
+      data: {
+        phone: "+92 300 0000000",
+        whatsapp: "+92 300 0000000",
+        email: "info@wahda1.com",
+        address: "Faisal Hills, Taxila"
+      }
+    });
+    console.log("✅ Company Info seeded");
+  }
+
   // ── Property Categories ─────────────────────────────────────────
   const categories = [
     { icon: "🏡", name: "Residential Plots",  description: "3 Marla to 1 Kanal residential plots available in all phases of Faisal Hills. Prime locations with easy installment plans.", countLabel: "120+ Available", order: 1 },

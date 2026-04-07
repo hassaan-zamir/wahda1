@@ -21,11 +21,11 @@ export function WhyChooseUsSection({ points }: { points: WhyPoint[] }) {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} style={{ padding: "110px 60px", position: "relative", overflow: "hidden" }}>
+    <section id="about" ref={sectionRef} className="py-16 md:py-[110px] px-4 md:px-[60px]" style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           {/* Visual */}
-          <div className="reveal" style={{ position: "relative", height: 550 }}>
+          <div className="reveal h-[400px] md:h-[550px]" style={{ position: "relative" }}>
             <div style={{
               position: "absolute", top: 0, left: 0, width: "72%", height: "75%",
               background: "var(--dark2)", border: "1px solid rgba(200,169,81,0.12)",

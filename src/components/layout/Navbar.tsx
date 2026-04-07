@@ -25,11 +25,11 @@ export function Navbar() {
   return (
     <nav
       id="navbar"
+      className="px-4 md:px-[60px]"
       style={{
         position: "fixed", top: 0, left: 0, right: 0,
         zIndex: 1000, height: 72,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 60px",
         background: scrolled ? "rgba(7,11,20,0.97)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         transition: "background 0.4s, backdrop-filter 0.4s",
@@ -50,8 +50,7 @@ export function Navbar() {
       </Link>
 
       {/* Desktop Menu */}
-      <ul style={{ display: "flex", alignItems: "center", gap: 36, listStyle: "none", margin: 0 }}
-          className="hidden md:flex">
+      <ul className="hidden md:flex items-center gap-9 m-0 list-none">
         {navLinks.map((l) => (
           <li key={l.name}>
             <a

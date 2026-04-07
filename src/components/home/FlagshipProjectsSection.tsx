@@ -33,8 +33,8 @@ export function FlagshipProjectsSection({ projects }: { projects: FlagshipProjec
   return (
     <div ref={sectionRef}>
       {projects.map((proj) => (
-        <section key={proj.id} id="faisal-hills" style={{
-          background: "var(--dark2)", padding: "110px 0", position: "relative", overflow: "hidden",
+        <section key={proj.id} id="faisal-hills" className="py-16 md:py-[110px]" style={{
+          background: "var(--dark2)", position: "relative", overflow: "hidden",
         }}>
           {/* Background */}
           <div style={{
@@ -45,16 +45,15 @@ export function FlagshipProjectsSection({ projects }: { projects: FlagshipProjec
             `,
           }} />
 
-          <div style={{
-            maxWidth: 1400, margin: "0 auto", padding: "0 60px",
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center",
+          <div className="px-4 md:px-[60px] grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20" style={{
+            maxWidth: 1400, margin: "0 auto", alignItems: "center",
             position: "relative", zIndex: 1,
           }}>
             {/* Visual */}
-            <div className="reveal" style={{ position: "relative", height: 580 }}>
+            <div className="reveal h-[450px] md:h-[580px]" style={{ position: "relative" }}>
               {/* Map card */}
-              <div style={{
-                position: "absolute", top: 0, left: 0, width: "78%", height: "70%",
+              <div className="w-[85%] md:w-[78%] h-[60%] md:h-[70%]" style={{
+                position: "absolute", top: 0, left: 0,
                 background: "linear-gradient(145deg,var(--dark3),var(--dark))",
                 border: "1px solid rgba(200,169,81,0.15)",
                 display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
@@ -85,8 +84,8 @@ export function FlagshipProjectsSection({ projects }: { projects: FlagshipProjec
               </div>
 
               {/* Accent card */}
-              <div style={{
-                position: "absolute", bottom: 0, right: 0, width: "52%", height: "44%",
+              <div className="w-[65%] md:w-[52%] h-[48%] md:h-[44%]" style={{
+                position: "absolute", bottom: 0, right: 0,
                 background: "linear-gradient(145deg,#0a1525,#0f2040)",
                 border: "1px solid rgba(26,107,138,0.25)",
                 display: "flex", flexDirection: "column", justifyContent: "flex-end",
@@ -133,9 +132,8 @@ export function FlagshipProjectsSection({ projects }: { projects: FlagshipProjec
 
               {/* Features 2x2 */}
               {proj.features.length > 0 && (
-                <div style={{
-                  display: "grid", gridTemplateColumns: "1fr 1fr",
-                  gap: 1, background: "rgba(200,169,81,0.08)",
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-[1px]" style={{
+                  background: "rgba(200,169,81,0.08)",
                   margin: "32px 0",
                 }}>
                   {proj.features.map((f, i) => (

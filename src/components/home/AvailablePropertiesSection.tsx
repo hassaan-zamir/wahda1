@@ -51,7 +51,7 @@ export function AvailablePropertiesSection({ properties }: { properties: Propert
 
   return (
     <section id="properties" ref={sectionRef}>
-      <div style={{ padding: "110px 60px", maxWidth: 1400, margin: "0 auto" }}>
+      <div className="py-16 md:py-[110px] px-4 md:px-[60px] max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20, marginBottom: 64 }}>
           <div>
@@ -73,7 +73,7 @@ export function AvailablePropertiesSection({ properties }: { properties: Propert
         </div>
 
         {/* Filters */}
-        <div className="reveal" style={{ display: "flex", gap: 4, marginBottom: 40, flexWrap: "wrap" }}>
+        <div className="reveal flex flex-wrap gap-2 mb-10 justify-center sm:justify-start">
           {FILTERS.map((f) => (
             <button
               key={f.value}
@@ -95,9 +95,7 @@ export function AvailablePropertiesSection({ properties }: { properties: Propert
         </div>
 
         {/* Grid */}
-        <div className="reveal" style={{
-          display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20,
-        }}>
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((prop) => (
             <div
               key={prop.id}

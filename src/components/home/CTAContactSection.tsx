@@ -1,11 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { toast } from "sonner";
+import { useEffect, useRef } from "react";
 
-export function CTAContactSection() {
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+export function CTAContactSection({ info }: { info: any }) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,33 +13,9 @@ export function CTAContactSection() {
     return () => obs.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    setLoading(true);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: input }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        toast.error(data.error || "Failed to submit. Please try again.");
-      } else {
-        toast.success("Thank you! Our team will contact you shortly.");
-        setInput("");
-      }
-    } catch {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <section id="contact" ref={sectionRef} style={{
-      padding: "140px 60px", position: "relative", overflow: "hidden", textAlign: "center",
+    <section id="contact" ref={sectionRef} className="py-20 md:py-[140px] px-4 md:px-[60px]" style={{
+      position: "relative", overflow: "hidden", textAlign: "center",
     }}>
       <div style={{
         position: "absolute", inset: 0,
@@ -64,41 +37,33 @@ export function CTAContactSection() {
           Get a free consultation with our expert team today.
         </p>
 
-        <form onSubmit={handleSubmit} style={{ display: "flex", gap: 0, maxWidth: 500, margin: "0 auto 32px" }}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Your name or phone number..."
-            style={{
-              flex: 1, background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(200,169,81,0.25)", borderRight: "none",
-              color: "var(--white)", padding: "16px 24px",
-              fontFamily: "var(--font-dm-sans)", fontSize: 12, outline: "none",
-            }}
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              background: loading ? "var(--gray)" : "var(--gold)",
-              border: "1px solid var(--gold)",
-              color: "var(--deep)", padding: "16px 36px",
-              fontFamily: "var(--font-dm-sans)", fontSize: 9,
-              letterSpacing: "3px", textTransform: "uppercase",
-              fontWeight: 700, cursor: loading ? "not-allowed" : "pointer",
-              transition: "all 0.3s",
-            }}
-          >
-            {loading ? "Sending..." : "Get Callback"}
-          </button>
-        </form>
+        <div style={{ display: "flex", justifyContent: "center", gap: 30, flexWrap: "wrap", marginBottom: 32 }}>
+          {info?.phone && (
+            <a href={`tel:${info.phone}`} style={{
+              background: "var(--gold)", color: "var(--deep)", padding: "16px 36px",
+              fontFamily: "var(--font-dm-sans)", fontSize: 10, letterSpacing: "2px",
+              textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
+              display: "flex", alignItems: "center", gap: 10,
+            }}>
+              <span style={{ fontSize: 16 }}>📞</span> Call {info.phone}
+            </a>
+          )}
+          {info?.whatsapp && (
+            <a href={`https://wa.me/${info.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" style={{
+              background: "rgba(200,169,81,0.1)", border: "1px solid var(--gold)", color: "var(--gold)", 
+              padding: "16px 36px", fontFamily: "var(--font-dm-sans)", fontSize: 10, letterSpacing: "2px",
+              textTransform: "uppercase", fontWeight: 700, textDecoration: "none",
+              display: "flex", alignItems: "center", gap: 10,
+            }}>
+              <span style={{ fontSize: 16 }}>💬</span> WhatsApp Us
+            </a>
+          )}
+        </div>
 
         <div style={{ display: "flex", justifyContent: "center", gap: 40, flexWrap: "wrap" }}>
           {[
-            { icon: "📞", text: "+92 300 0000000" },
-            { icon: "💬", text: "WhatsApp Available" },
-            { icon: "🏢", text: "Faisal Hills Office" },
+            { icon: "📧", text: info?.email || "info@wahda1.com" },
+            { icon: "🏢", text: info?.address || "Faisal Hills Office" },
           ].map((item) => (
             <div key={item.text} style={{
               display: "flex", alignItems: "center", gap: 10,

@@ -1,9 +1,8 @@
 "use client";
 export function SearchSection() {
   return (
-    <div style={{
+    <div className="p-6 md:p-[60px]" style={{
       background: "var(--dark2)",
-      padding: "60px",
       borderBottom: "1px solid rgba(255,255,255,0.04)",
     }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
@@ -15,10 +14,7 @@ export function SearchSection() {
           <span style={{ width: 30, height: 1, background: "var(--gold)", display: "inline-block" }} />
           Find Your Property
         </h3>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr auto",
-          gap: 1,
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-[1px]" style={{
           background: "rgba(200,169,81,0.1)",
         }}>
           {[

@@ -7,14 +7,13 @@ export function Footer() {
   const company    = ["About Wahda1", "Our Mission", "Brand Partners", "Careers", "Blog & News", "Contact Us"];
 
   return (
-    <footer style={{
+    <footer className="py-10 md:pt-[80px] md:pb-[40px] px-4 md:px-[60px]" style={{
       background: "var(--dark2)",
       borderTop: "1px solid rgba(200,169,81,0.1)",
-      padding: "80px 60px 40px",
     }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
         {/* Top 4-col grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr 1fr", gap: 60, marginBottom: 64 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2.5fr_1fr_1fr_1fr] gap-10 lg:gap-[60px] mb-10 lg:mb-16">
           {/* Brand */}
           <div>
             <span style={{

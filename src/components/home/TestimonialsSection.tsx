@@ -23,7 +23,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ background: "var(--dark2)", padding: "110px 60px" }}>
+    <section ref={sectionRef} className="py-16 md:py-[110px] px-4 md:px-[60px]" style={{ background: "var(--dark2)" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
         <div className="reveal" style={{ marginBottom: 64 }}>
           <p style={{ fontSize: 9, letterSpacing: "5px", textTransform: "uppercase", color: "var(--gold)", marginBottom: 14, fontFamily: "var(--font-dm-sans)" }}>
@@ -34,14 +34,14 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
           </h2>
         </div>
 
-        <div className="reveal" style={{
-          display: "grid", gridTemplateColumns: "repeat(3,1fr)",
-          gap: 2, background: "rgba(200,169,81,0.06)",
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[2px]" style={{
+          background: "rgba(200,169,81,0.06)",
         }}>
           {testimonials.map((t) => (
             <div
               key={t.id}
-              style={{ background: "var(--dark2)", padding: "48px 40px", transition: "background 0.4s" }}
+              className="p-8 md:p-12 transition-colors duration-400"
+              style={{ background: "var(--dark2)" }}
               onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "var(--dark3)")}
               onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "var(--dark2)")}
             >

@@ -22,12 +22,12 @@ export function ConstructionServicesSection({ services }: { services: Constructi
   }, []);
 
   return (
-    <section id="construction" ref={sectionRef} style={{ padding: "110px 0", position: "relative", overflow: "hidden" }}>
+    <section id="construction" ref={sectionRef} className="py-16 md:py-[110px]" style={{ position: "relative", overflow: "hidden" }}>
       <div style={{
         position: "absolute", inset: 0,
         background: "radial-gradient(ellipse at 30% 50%, rgba(200,169,81,0.06) 0%, transparent 55%)",
       }} />
-      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 60px", position: "relative", zIndex: 1 }}>
+      <div className="px-4 md:px-[60px]" style={{ maxWidth: 1400, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <div className="reveal" style={{ marginBottom: 64 }}>
           <p style={{ fontSize: 9, letterSpacing: "5px", textTransform: "uppercase", color: "var(--gold)", marginBottom: 14, fontFamily: "var(--font-dm-sans)" }}>
             Build With Us
@@ -40,9 +40,8 @@ export function ConstructionServicesSection({ services }: { services: Constructi
           </p>
         </div>
 
-        <div className="reveal" style={{
-          display: "grid", gridTemplateColumns: "1fr 1fr",
-          gap: 2, background: "rgba(200,169,81,0.08)",
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-[2px]" style={{
+          background: "rgba(200,169,81,0.08)",
         }}>
           {services.map((svc, i) => (
             <div

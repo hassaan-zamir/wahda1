@@ -174,3 +174,13 @@ model Portfolio {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model CompanyInfo {
+  id        String   @id @default(cuid())
+  phone     String   @default("+92 300 0000000")
+  whatsapp  String   @default("+92 300 0000000")
+  email     String   @default("info@wahda1.com")
+  address   String   @default("Faisal Hills, Taxila")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import prisma from "@/lib/prisma";
@@ -167,7 +169,4 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   );
 }
 
-export async function generateStaticParams() {
-  const projects = await prisma.flagshipProject.findMany({ select: { slug: true } });
-  return projects.map((p: { slug: string }) => ({ slug: p.slug }));
-}
+
