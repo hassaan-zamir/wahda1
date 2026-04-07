@@ -1,0 +1,178 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HeroStat {
+  id        String   @id @default(cuid())
+  value     String   // e.g. "500+"
+  label     String   // e.g. "Properties Listed"
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PropertyCategory {
+  id          String   @id @default(cuid())
+  icon        String   // emoji
+  name        String
+  description String
+  countLabel  String   // e.g. "120+ Available"
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FlagshipProject {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  subtitle    String?    // e.g. "Taxila"
+  location    String     // e.g. "Taxila · Rawalpindi"
+  description String
+  badge       String?    // e.g. "RDA Approved · NOC Verified"
+  ribbon      String?    // e.g. "Prime Location"
+  accentTitle String?    // e.g. "Faisal Hills"
+  accentSub   String?    // e.g. "📍 Taxila · Rawalpindi"
+  accentNote  String?    // e.g. "RDA Approved · NOC Verified"
+  features    Json       // Array of {icon, name, value}
+  order       Int        @default(0)
+  active      Boolean    @default(true)
+  properties  Property[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Property {
+  id               String          @id @default(cuid())
+  title            String
+  slug             String          @unique
+  type             String          // residential, commercial, villa, apartment, shop, offplan
+  typelabel        String          // e.g. "Residential Plot · Faisal Hills"
+  description      String?
+  price            String          // e.g. "85 Lac"
+  location         String          // e.g. "Faisal Hills Phase 1, Block A"
+  badge            String          @default("Available") // Available, Hot Deal, New, Sold Out
+  size             String?         // e.g. "10 Marla"
+  detail1Label     String?         // e.g. "Corner"
+  detail1Value     String?         // e.g. "Position"
+  detail2Label     String?         // e.g. "Ready"
+  detail2Value     String?         // e.g. "Possession"
+  status           String          @default("Available") // Available, Sold, Upcoming
+  featured         Boolean         @default(false)
+  flagshipProject  FlagshipProject? @relation(fields: [flagshipProjectId], references: [id])
+  flagshipProjectId String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
+
+model TrustedBrand {
+  id          String   @id @default(cuid())
+  name        String
+  initials    String   // e.g. "FH"
+  bgColor     String   // e.g. "rgba(200,169,81,0.12)"
+  textColor   String   // e.g. "var(--gold)"
+  roleTag     String   // e.g. "Official Partner · Taxila"
+  description String
+  propTypes   String[] // e.g. ["Plots", "Villas", "Commercial"]
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ConstructionService {
+  id          String   @id @default(cuid())
+  icon        String   // emoji
+  title       String
+  description String
+  bullets     String[] // list items
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model WhyChooseUs {
+  id          String   @id @default(cuid())
+  icon        String   // emoji
+  title       String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SiteStats {
+  id        String   @id @default(cuid())
+  key       String   @unique // e.g. "years_experience"
+  value     String   // e.g. "20+"
+  label     String   // e.g. "Years Combined Experience"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  initials  String   // e.g. "AK"
+  role      String?
+  content   String
+  rating    Int      @default(5)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactLead {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String?
+  email     String?
+  message   String?
+  isRead    Boolean  @default(false)
+  ipAddress String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  message     String
+  property    String?
+  source      String?  @default("Website") // Website, Referral, Social, Walk-in
+  stage       String   @default("New")     // New, Contacted, Qualified, Proposal, Closed, Lost
+  assignee    String?
+  notes       String?
+  status      String   @default("New")     // New, Contacted, Closed
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String
+  location    String?
+  completion  String?
+  images      String[]
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
